@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://caldmhuw4mlki"]
+
+[ext_resource type="PackedScene" uid="uid://dkopn38cor8tx" path="res://characters/npc.tscn" id="1_lpn3u"]
+[ext_resource type="Script" uid="uid://d035khs4m55fp" path="res://characters/nathan/nathan.gd" id="2_ax2qw"]
+[ext_resource type="Texture2D" uid="uid://cfa8i86q0hah6" path="res://characters/nathan/NathanDW.png" id="2_ndm24"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ax2qw"]
+radius = 4.0
+height = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fauv"]
+size = Vector2(32, 32)
+
+[node name="Nathan" instance=ExtResource("1_lpn3u")]
+script = ExtResource("2_ax2qw")
+tileName = "Watermelon"
+dialog_root = null
+dialog = {}
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_ndm24")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_ax2qw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+shape = SubResource("RectangleShape2D_3fauv")

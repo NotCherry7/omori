@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgocd7mvwv1mw"]
+
+[ext_resource type="Script" uid="uid://cheusksgwh4qw" path="res://scripts/all/tiles/transport_tile.gd" id="1_bkc08"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2krt"]
+size = Vector2(32, 32)
+
+[node name="TransportTile" type="Node2D"]
+script = ExtResource("1_bkc08")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_n2krt")

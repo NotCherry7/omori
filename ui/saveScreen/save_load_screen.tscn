@@ -1,0 +1,180 @@
+[gd_scene load_steps=21 format=3 uid="uid://cms88fx3oj2ku"]
+
+[ext_resource type="Shader" uid="uid://0nwckk8hmnas" path="res://shaders/slide_up.gdshader" id="1_4h43g"]
+[ext_resource type="Script" uid="uid://8wc1agvsgihm" path="res://scripts/all/save_load_screen.gd" id="1_4vlek"]
+[ext_resource type="Texture2D" uid="uid://cy1p2wkluwdj5" path="res://assets/backgrounds/Save_menu.png" id="2_4vlek"]
+[ext_resource type="Shader" uid="uid://d2ybshoc82nm5" path="res://shaders/bounce_sideways.gdshader" id="3_egole"]
+[ext_resource type="LabelSettings" uid="uid://lxdgasdisb1j" path="res://labelSettings/grayTitle.tres" id="5_0gc4d"]
+[ext_resource type="Texture2D" uid="uid://bm5nf7f2vjix8" path="res://ui/saveScreen/saveOrLoad.png" id="6_egole"]
+[ext_resource type="PackedScene" uid="uid://c87btbt4eg8vc" path="res://ui/saveScreen/save_section.tscn" id="6_ldujr"]
+[ext_resource type="Texture2D" uid="uid://chqwuceqapdr8" path="res://ui/redPointerRight.png" id="8_0gc4d"]
+[ext_resource type="AudioStream" uid="uid://65orjmpikthe" path="res://audio/sfx/SYS_select.ogg" id="9_j3k20"]
+[ext_resource type="Texture2D" uid="uid://dp2gpxrxkj118" path="res://ui/grayPointerRight.png" id="9_kj22n"]
+[ext_resource type="AudioStream" uid="uid://cupcm6b43tktv" path="res://audio/sfx/SYS_cursor1.ogg" id="10_kj22n"]
+[ext_resource type="AudioStream" uid="uid://dh8mtqv6yt5sh" path="res://audio/sfx/SYS_cancel.ogg" id="12_v71jd"]
+[ext_resource type="AudioStream" uid="uid://btgws6g0pi06y" path="res://audio/sfx/SYS_buzzer.ogg" id="13_igh43"]
+[ext_resource type="AudioStream" uid="uid://bcja0n5erl43e" path="res://audio/battle/SE_load.ogg" id="14_igh43"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2lfxr"]
+shader = ExtResource("1_4h43g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v71jd"]
+shader = ExtResource("3_egole")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j3k20"]
+
+[sub_resource type="Animation" id="Animation_g6n7a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_igh43"]
+resource_name = "fade"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qm2sn"]
+_data = {
+&"RESET": SubResource("Animation_g6n7a"),
+&"fade": SubResource("Animation_igh43")
+}
+
+[node name="SaveLoadScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4vlek")
+
+[node name="Background" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_2lfxr")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4vlek")
+stretch_mode = 1
+
+[node name="SaveOrLoad" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 43.0
+offset_top = 27.0
+offset_right = 160.0
+offset_bottom = 89.0
+texture = ExtResource("6_egole")
+
+[node name="Save" type="Label" parent="SaveOrLoad"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = -2.0
+offset_right = 108.0
+offset_bottom = 34.0
+text = "Save"
+label_settings = ExtResource("5_0gc4d")
+
+[node name="saveCursor" type="Marker2D" parent="SaveOrLoad/Save"]
+position = Vector2(-22, 19)
+
+[node name="Load" type="Label" parent="SaveOrLoad"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 24.0
+offset_right = 108.0
+offset_bottom = 60.0
+text = "Load"
+label_settings = ExtResource("5_0gc4d")
+
+[node name="loadCursor" type="Marker2D" parent="SaveOrLoad/Load"]
+position = Vector2(-22, 19)
+
+[node name="File1" parent="." instance=ExtResource("6_ldujr")]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 27.0
+offset_right = 597.0
+offset_bottom = 167.0
+
+[node name="File2" parent="." instance=ExtResource("6_ldujr")]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 170.0
+offset_right = 597.0
+offset_bottom = 310.0
+saveFile = 2
+
+[node name="File3" parent="." instance=ExtResource("6_ldujr")]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 313.0
+offset_right = 597.0
+offset_bottom = 453.0
+saveFile = 3
+
+[node name="SaveLoadCursor" type="Sprite2D" parent="."]
+z_index = 3
+material = SubResource("ShaderMaterial_v71jd")
+position = Vector2(71, 44)
+texture = ExtResource("8_0gc4d")
+
+[node name="FileCursor" type="Sprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_j3k20")
+position = Vector2(186, 44)
+texture = ExtResource("9_kj22n")
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_j3k20")
+
+[node name="Move" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_kj22n")
+
+[node name="Cancel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_v71jd")
+
+[node name="Buzzer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_igh43")
+
+[node name="Load" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_igh43")
+
+[node name="MoveCursor" type="Timer" parent="."]
+wait_time = 0.15
+
+[node name="Screen" type="ColorRect" parent="."]
+z_index = 5
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 0)
+
+[node name="ScreenAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qm2sn")
+}
+
+[connection signal="timeout" from="MoveCursor" to="." method="_on_move_cursor_timeout"]

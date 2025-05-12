@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjph41jykma4i"]
+
+[ext_resource type="Script" uid="uid://dgjm1nuupsoin" path="res://tiles/transport/enter_scene_tile.gd" id="1_xfgx5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ty7st"]
+size = Vector2(32, 32)
+
+[node name="EnterSceneTile" type="Node2D"]
+z_index = 1
+script = ExtResource("1_xfgx5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ty7st")

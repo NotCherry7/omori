@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://baoudyyntbjd8"
+path="res://.godot/imported/040 - You Were Wrong. Go Back..mp3-035245cd1c09b58af6779db1e7711f57.mp3str"
+
+[deps]
+
+source_file="res://audio/music/040 - You Were Wrong. Go Back..mp3"
+dest_files=["res://.godot/imported/040 - You Were Wrong. Go Back..mp3-035245cd1c09b58af6779db1e7711f57.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

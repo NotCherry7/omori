@@ -1,0 +1,86 @@
+[gd_scene load_steps=2 format=3 uid="uid://2oe62b3tiqkr"]
+
+[ext_resource type="Script" uid="uid://cf2r4olvexfx6" path="res://dev/function_tester.gd" id="1_tyisq"]
+
+[node name="FunctionTester" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tyisq")
+
+[node name="currentEmotion" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -247.5
+offset_top = 46.0
+offset_right = -124.5
+offset_bottom = 69.0
+grow_horizontal = 2
+text = "Attacker Emotion"
+
+[node name="result" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -337.0
+offset_top = 316.0
+offset_right = -37.0
+offset_bottom = 365.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 35
+text = "RESULT"
+horizontal_alignment = 1
+
+[node name="curEmot" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -261.0
+offset_top = 78.0
+offset_right = -111.0
+offset_bottom = 109.0
+grow_horizontal = 2
+
+[node name="addEmotion" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -247.5
+offset_top = 168.0
+offset_right = -124.5
+offset_bottom = 191.0
+grow_horizontal = 2
+text = "Victim Emotion"
+horizontal_alignment = 1
+
+[node name="addEmot" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -261.0
+offset_top = 200.0
+offset_right = -111.0
+offset_bottom = 231.0
+grow_horizontal = 2
+
+[node name="calculate" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -172.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "calculate"
+
+[connection signal="pressed" from="calculate" to="." method="_on_calculate_pressed"]

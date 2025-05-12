@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dtycvp8dr336m"]
+
+[ext_resource type="FontFile" uid="uid://bxm5isfgrapdr" path="res://assets/fonts/OMORI_GAME2.ttf" id="1_efm4o"]
+
+[resource]
+font = ExtResource("1_efm4o")
+font_size = 21
+font_color = Color(1.63645e-06, 0.932922, 0, 1)

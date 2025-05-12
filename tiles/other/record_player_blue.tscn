@@ -1,0 +1,99 @@
+[gd_scene load_steps=11 format=3 uid="uid://di3r0xlysajmp"]
+
+[ext_resource type="Script" uid="uid://b0quptmdb4sde" path="res://tiles/other/record_player_blue.gd" id="1_cine5"]
+[ext_resource type="AudioStream" uid="uid://cph5xjonl58ct" path="res://audio/music/002 - WHITE SPACE.mp3" id="2_17wst"]
+[ext_resource type="Texture2D" uid="uid://conc6vkaoxgcj" path="res://assets/tilesets/recordplayer blue (2).png" id="2_qrdcq"]
+[ext_resource type="AudioStream" uid="uid://c71wg4iwk24ly" path="res://audio/music/005 - By Your Side..mp3" id="3_00ykd"]
+[ext_resource type="Texture2D" uid="uid://vtbc2obr88sv" path="res://assets/tilesets/recordplayer center.png" id="3_nvn7a"]
+[ext_resource type="AudioStream" uid="uid://bqwf1gai6i2x" path="res://audio/music/039 - Trouble - NEVER-ALWAYS.mp3" id="4_8bnb6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrdcq"]
+size = Vector2(64, 32)
+
+[sub_resource type="Animation" id="Animation_vpdmf"]
+resource_name = "spin"
+length = 1.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RecordPlayer:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Record:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_17wst"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RecordPlayer:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Record:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_00ykd"]
+_data = {
+&"RESET": SubResource("Animation_17wst"),
+&"spin": SubResource("Animation_vpdmf")
+}
+
+[node name="RecordPlayerBlue" type="Node2D"]
+script = ExtResource("1_cine5")
+music = Array[AudioStream]([ExtResource("2_17wst"), ExtResource("3_00ykd"), ExtResource("4_8bnb6")])
+music_color = Array[Color]([Color(0.156863, 0.796078, 0.772549, 1), Color(0.415686, 0.866667, 0, 1), Color(0.796078, 0.2, 0.14902, 1)])
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_qrdcq")
+
+[node name="RecordPlayer" type="Sprite2D" parent="."]
+texture = ExtResource("2_qrdcq")
+hframes = 8
+
+[node name="Record" type="Sprite2D" parent="."]
+texture = ExtResource("3_nvn7a")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_00ykd")
+}
+autoplay = "spin"

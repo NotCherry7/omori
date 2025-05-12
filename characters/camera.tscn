@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv2rk5jhkufya"]
+
+[ext_resource type="Shader" uid="uid://3tx1gx3jck6e" path="res://shaders/slide.gdshader" id="1_6u8r1"]
+[ext_resource type="Texture2D" uid="uid://b7j78xj43f0tf" path="res://assets/backgrounds/Space_parallax.rpgmvp.png" id="2_g2mra"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5e18o"]
+shader = ExtResource("1_6u8r1")
+
+[node name="Camera2D" type="Camera2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+visible = false
+z_index = -5
+material = SubResource("ShaderMaterial_5e18o")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -869.0
+offset_top = -442.0
+offset_right = 923.0
+offset_bottom = 406.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_g2mra")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true

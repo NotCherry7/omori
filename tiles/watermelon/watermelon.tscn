@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyatbqpks2mxg"]
+
+[ext_resource type="Script" uid="uid://busclj73r2p0i" path="res://scripts/all/tiles/watermelon.gd" id="1_pxwts"]
+[ext_resource type="AudioStream" uid="uid://dnraqtp6ynail" path="res://audio/tiles/SE_Watermelon.ogg" id="2_2looo"]
+[ext_resource type="Texture2D" uid="uid://c5b1xvp42gd3r" path="res://assets/tilesets/general_use.png" id="2_pxwts"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxwts"]
+size = Vector2(32, 32)
+
+[node name="Watermelon" type="Node2D"]
+script = ExtResource("1_pxwts")
+sound = ExtResource("2_2looo")
+
+[node name="watermelon" type="Sprite2D" parent="."]
+texture = ExtResource("2_pxwts")
+region_enabled = true
+region_rect = Rect2(192, 32, 32, 32)
+
+[node name="squashed" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_pxwts")
+region_enabled = true
+region_rect = Rect2(224, 32, 32, 32)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_pxwts")

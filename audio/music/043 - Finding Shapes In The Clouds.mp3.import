@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cv3q06qmyptqs"
+path="res://.godot/imported/043 - Finding Shapes In The Clouds.mp3-f60cff2013c2313f6a792fde8e23a190.mp3str"
+
+[deps]
+
+source_file="res://audio/music/043 - Finding Shapes In The Clouds.mp3"
+dest_files=["res://.godot/imported/043 - Finding Shapes In The Clouds.mp3-f60cff2013c2313f6a792fde8e23a190.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

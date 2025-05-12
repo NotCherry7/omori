@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://khbqhpg7i7gd"]
+
+[ext_resource type="Script" uid="uid://n2wvb0f7nm45" path="res://scripts/all/tiles/save_tile.gd" id="1_kt4nc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l33dc"]
+size = Vector2(32, 32)
+
+[node name="SaveTile" type="Node2D"]
+script = ExtResource("1_kt4nc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_l33dc")

@@ -1,0 +1,130 @@
+[gd_scene load_steps=12 format=3 uid="uid://cj7361ey8w1eg"]
+
+[ext_resource type="FontFile" uid="uid://bxm5isfgrapdr" path="res://assets/fonts/OMORI_GAME2.ttf" id="1_m0228"]
+[ext_resource type="Script" uid="uid://c2gpenuku2fv3" path="res://cutscenes/to_town.gd" id="1_mji06"]
+[ext_resource type="Shader" uid="uid://dtrwj1hr1swkx" path="res://shaders/crumpled_paper.gdshader" id="1_y5hpf"]
+[ext_resource type="Shader" uid="uid://cip5nhc34qx8i" path="res://shaders/to_town.gdshader" id="2_y5hpf"]
+[ext_resource type="AudioStream" uid="uid://b35st2ugs6u6g" path="res://audio/music/042 - Photograph.mp3" id="5_mji06"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6n7ny"]
+shader = ExtResource("1_y5hpf")
+shader_parameter/update_interval = 1.5
+shader_parameter/noise_scale = 200.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mji06"]
+shader = ExtResource("2_y5hpf")
+shader_parameter/time_between_changes = 1.5
+shader_parameter/distortion_strength = 0.004
+
+[sub_resource type="LabelSettings" id="LabelSettings_7plhx"]
+font = ExtResource("1_m0228")
+font_size = 35
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_y5hpf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("music:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mji06"]
+resource_name = "display"
+length = 38.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("music:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.8, 37.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.9, 11, 15.5, 20, 24.5, 29, 33.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "All will be well", "You are home now", "You are safe", "Enjoy the time you have", "You will make it through this", "I am here for you", ""]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("music:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(36, 37.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -16.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6n7ny"]
+_data = {
+&"RESET": SubResource("Animation_y5hpf"),
+&"display": SubResource("Animation_mji06")
+}
+
+[node name="ToTown" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mji06")
+scene_to_send = "res://worlds/faraway_town/homes/luke_room.tscn"
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_6n7ny")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+material = SubResource("ShaderMaterial_mji06")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_7plhx")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6n7ny")
+}
+autoplay = "display"
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_mji06")
+volume_db = -16.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx11w4ys7curj"]
+
+[ext_resource type="Script" uid="uid://babue1hvb2hab" path="res://tiles/story/flower.gd" id="1_prj67"]
+[ext_resource type="Texture2D" uid="uid://behn30pv5s4ku" path="res://assets/tilesets/FA_objects.png" id="2_fqryt"]
+[ext_resource type="AudioStream" uid="uid://dnraqtp6ynail" path="res://audio/tiles/SE_Watermelon.ogg" id="3_fqryt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06bfg"]
+size = Vector2(32, 32)
+
+[node name="Flower" type="Node2D"]
+script = ExtResource("1_prj67")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fqryt")
+hframes = 3
+vframes = 2
+region_enabled = true
+region_rect = Rect2(32, 800, 96, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_06bfg")
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fqryt")

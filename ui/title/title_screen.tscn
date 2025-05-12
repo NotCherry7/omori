@@ -1,0 +1,275 @@
+[gd_scene load_steps=23 format=3 uid="uid://bc7pi2s85w1gp"]
+
+[ext_resource type="Script" uid="uid://dsx51ln4q2v8x" path="res://scripts/all/title_screen.gd" id="1_n838c"]
+[ext_resource type="Texture2D" uid="uid://cl2i7f2b8j2m0" path="res://assets/faces/luke/luke_neutral.png" id="3_65t2c"]
+[ext_resource type="Texture2D" uid="uid://bd0w8nty23nxs" path="res://ui/title/button.png" id="4_65t2c"]
+[ext_resource type="Texture2D" uid="uid://d3dsbolqp4i8m" path="res://assets/ui/record title.png" id="4_p2dn7"]
+[ext_resource type="FontFile" uid="uid://bxm5isfgrapdr" path="res://assets/fonts/OMORI_GAME2.ttf" id="5_p2dn7"]
+[ext_resource type="AudioStream" uid="uid://5kqgn6o1xebi" path="res://audio/music/title.mp3" id="6_vdtkt"]
+[ext_resource type="Shader" uid="uid://d2ybshoc82nm5" path="res://shaders/bounce_sideways.gdshader" id="8_65t2c"]
+[ext_resource type="Texture2D" uid="uid://chqwuceqapdr8" path="res://ui/redPointerRight.png" id="9_p2dn7"]
+[ext_resource type="AudioStream" uid="uid://65orjmpikthe" path="res://audio/sfx/SYS_select.ogg" id="10_p2dn7"]
+[ext_resource type="AudioStream" uid="uid://cupcm6b43tktv" path="res://audio/sfx/SYS_cursor1.ogg" id="11_vdtkt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3jlwc"]
+font = ExtResource("5_p2dn7")
+font_size = 110
+font_color = Color(0.423529, 0.054902, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jlwc"]
+atlas = ExtResource("4_p2dn7")
+region = Rect2(0, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyhe3"]
+atlas = ExtResource("4_p2dn7")
+region = Rect2(31, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6hs5"]
+atlas = ExtResource("4_p2dn7")
+region = Rect2(0, 31, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38ioi"]
+atlas = ExtResource("4_p2dn7")
+region = Rect2(31, 31, 31, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bo4mg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jlwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyhe3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6hs5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38ioi")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2dn7"]
+atlas = ExtResource("3_65t2c")
+region = Rect2(0, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdtkt"]
+atlas = ExtResource("3_65t2c")
+region = Rect2(900, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sah4c"]
+atlas = ExtResource("3_65t2c")
+region = Rect2(1800, 0, 900, 900)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wa5rm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2dn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdtkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sah4c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bor1v"]
+font = ExtResource("5_p2dn7")
+font_size = 28
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vdtkt"]
+shader = ExtResource("8_65t2c")
+
+[node name="Title Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n838c")
+music = ExtResource("6_vdtkt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.137255, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(900, 1260)
+layout_mode = 0
+offset_left = 203.0
+offset_top = 140.0
+offset_right = 1103.0
+offset_bottom = 1400.0
+scale = Vector2(0.27, 0.27)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -161.5
+offset_right = 183.5
+offset_bottom = 111.0
+grow_horizontal = 2
+text = "LUK  THY"
+label_settings = SubResource("LabelSettings_3jlwc")
+
+[node name="Record" type="AnimatedSprite2D" parent="."]
+position = Vector2(320, 59)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_bo4mg")
+animation = &"spin"
+autoplay = "spin"
+frame_progress = 0.120756
+
+[node name="MarginContainer4" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Omori" type="AnimatedSprite2D" parent="MarginContainer4"]
+position = Vector2(320, 301)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_wa5rm")
+autoplay = "default"
+frame_progress = 0.360093
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = -59.0
+offset_right = 174.0
+offset_bottom = -24.0
+grow_vertical = 0
+
+[node name="NewGameCursor" type="Marker2D" parent="MarginContainer"]
+position = Vector2(-21, 17)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_65t2c")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="New Game" type="Label" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "NEW GAME"
+label_settings = SubResource("LabelSettings_bor1v")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -59.0
+offset_top = -59.0
+offset_right = 61.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ContinueCursor" type="Marker2D" parent="MarginContainer2"]
+position = Vector2(-21, 17)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer2"]
+layout_mode = 2
+texture = ExtResource("4_65t2c")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="Continue" type="Label" parent="MarginContainer2/CenterContainer"]
+layout_mode = 2
+text = "CONTINUE"
+label_settings = SubResource("LabelSettings_bor1v")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -174.0
+offset_top = -59.0
+offset_right = -54.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="OptionsCursor" type="Marker2D" parent="MarginContainer3"]
+position = Vector2(-21, 17)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer3"]
+layout_mode = 2
+texture = ExtResource("4_65t2c")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Options" type="Label" parent="MarginContainer3"]
+layout_mode = 2
+text = "QUIT"
+label_settings = SubResource("LabelSettings_bor1v")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer3"]
+layout_mode = 2
+
+[node name="Cursor" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_vdtkt")
+position = Vector2(35, 438)
+texture = ExtResource("9_p2dn7")
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_p2dn7")
+bus = &"SFX"
+
+[node name="Move" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_vdtkt")
+bus = &"SFX"
+
+[node name="MoveCursorTimer" type="Timer" parent="."]
+wait_time = 0.15
+
+[connection signal="timeout" from="MoveCursorTimer" to="." method="_on_move_cursor_timer_timeout"]

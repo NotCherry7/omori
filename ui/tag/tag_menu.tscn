@@ -1,0 +1,377 @@
+[gd_scene load_steps=20 format=3 uid="uid://c5ko21i6ow2a4"]
+
+[ext_resource type="Script" uid="uid://wn1cb6o71apt" path="res://scripts/all/tag_menu.gd" id="1_d0suu"]
+[ext_resource type="Texture2D" uid="uid://ci2rhftwuh2sb" path="res://assets/ui/Tag-1.png (1).png" id="1_ulu7d"]
+[ext_resource type="Texture2D" uid="uid://mymewnj14ggw" path="res://assets/ui/TagWho-1.png (1).png" id="2_ideus"]
+[ext_resource type="Shader" uid="uid://oii80p47fjga" path="res://shaders/blur.gdshader" id="2_o4rvb"]
+[ext_resource type="FontFile" uid="uid://bxm5isfgrapdr" path="res://assets/fonts/OMORI_GAME2.ttf" id="3_2w2o5"]
+[ext_resource type="Texture2D" uid="uid://dqwj1v4wwyefy" path="res://assets/ui/Tag-2.png.png" id="3_d0suu"]
+[ext_resource type="Texture2D" uid="uid://c80t8pjx3sn4f" path="res://assets/faces/brenna/brenna_neutral_highres.png" id="5_d0suu"]
+[ext_resource type="Texture2D" uid="uid://cl2i7f2b8j2m0" path="res://assets/faces/luke/luke_neutral.png" id="6_svb6p"]
+[ext_resource type="AudioStream" uid="uid://btgws6g0pi06y" path="res://audio/sfx/SYS_buzzer.ogg" id="8_o4rvb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_svb6p"]
+shader = ExtResource("2_o4rvb")
+shader_parameter/lod = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4rvb"]
+atlas = ExtResource("5_d0suu")
+region = Rect2(0, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf6dp"]
+atlas = ExtResource("6_svb6p")
+region = Rect2(0, 0, 900, 900)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_svb6p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4rvb")
+}],
+"loop": true,
+"name": &"brenna",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"fa_brenna",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"fa_luke",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf6dp")
+}],
+"loop": true,
+"name": &"luke",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ulu7d"]
+font = ExtResource("3_2w2o5")
+font_size = 25
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_k2a4c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurrentLeader/Second:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CurrentLeader/NextLeader:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CurrentLeader:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_svb6p"]
+resource_name = "open"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurrentLeader:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CurrentLeader/NextLeader:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -168)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CurrentLeader/Second:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 168)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.5]
+}
+
+[sub_resource type="Animation" id="Animation_d0suu"]
+resource_name = "swap"
+length = 0.3
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurrentLeader/Second:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 168), Vector2(-168, 0), Vector2(0, -168)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CurrentLeader/NextLeader:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -168), Vector2(168, 0), Vector2(0, 168)]
+}
+
+[sub_resource type="Animation" id="Animation_o4rvb"]
+resource_name = "swap_2"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurrentLeader/Second:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -168), Vector2(168, 0), Vector2(0, 168)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CurrentLeader/NextLeader:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 168), Vector2(-168, 0), Vector2(0, -168)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o4rvb"]
+_data = {
+&"RESET": SubResource("Animation_k2a4c"),
+&"open": SubResource("Animation_svb6p"),
+&"swap": SubResource("Animation_d0suu"),
+&"swap_2": SubResource("Animation_o4rvb")
+}
+
+[node name="TagMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d0suu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_svb6p")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CurrentLeader" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = -55.0
+offset_right = 55.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(55, 55)
+texture = ExtResource("1_ulu7d")
+
+[node name="NextLeader" type="TextureRect" parent="CurrentLeader"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -55.0
+offset_right = 55.0
+offset_bottom = 110.0
+grow_horizontal = 2
+pivot_offset = Vector2(55, 55)
+texture = ExtResource("1_ulu7d")
+
+[node name="Background" type="TextureRect" parent="CurrentLeader/NextLeader"]
+show_behind_parent = true
+clip_contents = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_d0suu")
+
+[node name="NextPhoto" type="AnimatedSprite2D" parent="CurrentLeader/NextLeader/Background"]
+position = Vector2(55, 54)
+scale = Vector2(0.117, 0.117)
+sprite_frames = SubResource("SpriteFrames_svb6p")
+animation = &"luke"
+
+[node name="Second" type="TextureRect" parent="CurrentLeader"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -55.0
+offset_right = 55.0
+offset_bottom = 110.0
+grow_horizontal = 2
+pivot_offset = Vector2(55, 55)
+texture = ExtResource("1_ulu7d")
+
+[node name="Background" type="TextureRect" parent="CurrentLeader/Second"]
+show_behind_parent = true
+clip_contents = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_d0suu")
+
+[node name="SecondPhoto" type="AnimatedSprite2D" parent="CurrentLeader/Second/Background"]
+position = Vector2(55, 54)
+scale = Vector2(0.117, 0.117)
+sprite_frames = SubResource("SpriteFrames_svb6p")
+animation = &"luke"
+
+[node name="LeaderTab" type="TextureRect" parent="CurrentLeader"]
+layout_mode = 0
+offset_top = -59.0
+offset_right = 110.0
+offset_bottom = -28.0
+pivot_offset = Vector2(55, 16)
+texture = ExtResource("2_ideus")
+
+[node name="LeaderLabel" type="Label" parent="CurrentLeader/LeaderTab"]
+layout_mode = 0
+offset_right = 110.0
+offset_bottom = 31.0
+text = "Leader"
+label_settings = SubResource("LabelSettings_ulu7d")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="TagWhoTab" type="TextureRect" parent="CurrentLeader"]
+layout_mode = 0
+offset_top = 109.0
+offset_right = 110.0
+offset_bottom = 140.0
+pivot_offset = Vector2(55, 16)
+texture = ExtResource("2_ideus")
+
+[node name="TagWhoLabel" type="Label" parent="CurrentLeader/TagWhoTab"]
+layout_mode = 0
+offset_right = 110.0
+offset_bottom = 31.0
+text = "Tag WHO?"
+label_settings = SubResource("LabelSettings_ulu7d")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Background" type="TextureRect" parent="CurrentLeader"]
+show_behind_parent = true
+clip_contents = true
+layout_mode = 0
+offset_right = 110.0
+offset_bottom = 110.0
+texture = ExtResource("3_d0suu")
+
+[node name="CurrentPhoto" type="AnimatedSprite2D" parent="CurrentLeader/Background"]
+position = Vector2(55, 54)
+scale = Vector2(0.117, 0.117)
+sprite_frames = SubResource("SpriteFrames_svb6p")
+animation = &"luke"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o4rvb")
+}
+
+[node name="Buzzer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_o4rvb")
+bus = &"SFX"

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cise7c6itf2d5"]
+
+[ext_resource type="AudioStream" uid="uid://txupqpj8p4ia" path="res://audio/music/Lets Get Together Now!.mp3" id="1_g3awq"]
+[ext_resource type="Script" uid="uid://dfihh3vwlsew0" path="res://audio/music/autoplay_music.gd" id="2_y4jgr"]
+
+[node name="AutoplayMusic" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_g3awq")
+autoplay = true
+bus = &"Music"
+script = ExtResource("2_y4jgr")

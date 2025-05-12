@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cph5xjonl58ct"
+path="res://.godot/imported/002 - WHITE SPACE.mp3-f25938a1708d797bdeb4656cbce27d9b.mp3str"
+
+[deps]
+
+source_file="res://audio/music/002 - WHITE SPACE.mp3"
+dest_files=["res://.godot/imported/002 - WHITE SPACE.mp3-f25938a1708d797bdeb4656cbce27d9b.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

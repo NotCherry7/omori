@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bqwf1gai6i2x"
+path="res://.godot/imported/039 - Trouble - NEVER-ALWAYS.mp3-b8e00e7ee09a3859590c24dddf78ecf4.mp3str"
+
+[deps]
+
+source_file="res://audio/music/039 - Trouble - NEVER-ALWAYS.mp3"
+dest_files=["res://.godot/imported/039 - Trouble - NEVER-ALWAYS.mp3-b8e00e7ee09a3859590c24dddf78ecf4.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dm18f787p0fhk"
+path="res://.godot/imported/036 - CHAOS ASSEMBLY.mp3-993bf0ea7fe094f3a4d45c4c1fa6b0ea.mp3str"
+
+[deps]
+
+source_file="res://audio/music/036 - CHAOS ASSEMBLY.mp3"
+dest_files=["res://.godot/imported/036 - CHAOS ASSEMBLY.mp3-993bf0ea7fe094f3a4d45c4c1fa6b0ea.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

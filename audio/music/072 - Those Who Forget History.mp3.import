@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://de6gwiuijsqy"
+path="res://.godot/imported/072 - Those Who Forget History.mp3-50a05d35ada7adece7906686b0d4acb3.mp3str"
+
+[deps]
+
+source_file="res://audio/music/072 - Those Who Forget History.mp3"
+dest_files=["res://.godot/imported/072 - Those Who Forget History.mp3-50a05d35ada7adece7906686b0d4acb3.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

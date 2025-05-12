@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://dimvalxxryxku"]
+
+[ext_resource type="Texture2D" uid="uid://diwqbllkeka7f" path="res://assets/ui/numbers/damage.png" id="1_u6j6h"]
+
+[sub_resource type="Animation" id="Animation_sqof4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, 20)]
+}
+
+[sub_resource type="Animation" id="Animation_u6j6h"]
+resource_name = "enter"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(16, -20), Vector2(16, 20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_62g3b"]
+_data = {
+&"RESET": SubResource("Animation_sqof4"),
+&"enter": SubResource("Animation_u6j6h")
+}
+
+[node name="DamageText" type="Control"]
+custom_minimum_size = Vector2(32, 40)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -16.0
+offset_right = 16.0
+offset_bottom = 40.0
+
+[node name="DamageText" type="Sprite2D" parent="."]
+position = Vector2(16, 20)
+texture = ExtResource("1_u6j6h")
+hframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_62g3b")
+}
+autoplay = "enter"

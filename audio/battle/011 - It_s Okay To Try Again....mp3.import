@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dmcwwww02836a"
+path="res://.godot/imported/011 - It_s Okay To Try Again....mp3-a96414ae5b1b2da1d0e0d3b5dcf313f6.mp3str"
+
+[deps]
+
+source_file="res://audio/battle/011 - It_s Okay To Try Again....mp3"
+dest_files=["res://.godot/imported/011 - It_s Okay To Try Again....mp3-a96414ae5b1b2da1d0e0d3b5dcf313f6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

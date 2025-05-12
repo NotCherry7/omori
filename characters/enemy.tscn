@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://irvjrs0sj2di"]
+
+[ext_resource type="Script" uid="uid://c8vxe6smvparg" path="res://scripts/all/enemy.gd" id="1_wa0eo"]
+[ext_resource type="Texture2D" uid="uid://djn4pofhpm1b4" path="res://characters/tea_cup/teaCup-1.png (1).png" id="2_nhupr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhupr"]
+size = Vector2(32.0001, 31.9999)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nhupr"]
+radius = 304.421
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ohc2"]
+size = Vector2(48, 48)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_wa0eo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nhupr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_nhupr")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(26, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_nhupr")
+
+[node name="HomePoint" type="Marker2D" parent="."]
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("RectangleShape2D_1ohc2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_player_entered_area"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_player_left_area"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_collision"]

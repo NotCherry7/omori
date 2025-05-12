@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://co5htd7xu720n"]
+
+[ext_resource type="PackedScene" uid="uid://cmamgoeqlc4jm" path="res://ui/battle/foe/foe.tscn" id="1_nxnr2"]
+
+[node name="Hearts" instance=ExtResource("1_nxnr2")]
+chips = 50

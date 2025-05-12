@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpfj5tkrsxem"]
+
+[ext_resource type="Script" uid="uid://bxxd7vl7771vh" path="res://scripts/all/dialog_option.gd" id="1_ldknw"]
+[ext_resource type="FontFile" uid="uid://bxm5isfgrapdr" path="res://assets/fonts/OMORI_GAME2.ttf" id="1_rubvu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1raxn"]
+font = ExtResource("1_rubvu")
+font_size = 33
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="DialogChoice" type="HBoxContainer"]
+offset_left = -92.0
+offset_top = -36.0
+script = ExtResource("1_ldknw")
+
+[node name="LeftSpacer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Choice" type="Label" parent="."]
+custom_minimum_size = Vector2(24, 30)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_1raxn")
+horizontal_alignment = 2
+uppercase = true
+
+[node name="RightSpacer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="CursorPos" type="Marker2D" parent="."]
+position = Vector2(28, 17)

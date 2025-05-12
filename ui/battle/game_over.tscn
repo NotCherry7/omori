@@ -1,0 +1,378 @@
+[gd_scene load_steps=23 format=3 uid="uid://dqw78bo2fubie"]
+
+[ext_resource type="Script" uid="uid://c1umnfngl70kg" path="res://ui/battle/game_over.gd" id="1_begol"]
+[ext_resource type="AudioStream" uid="uid://dmcwwww02836a" path="res://audio/battle/011 - It_s Okay To Try Again....mp3" id="2_2u1tn"]
+[ext_resource type="AudioStream" uid="uid://bcja0n5erl43e" path="res://audio/battle/SE_load.ogg" id="2_ecyjs"]
+[ext_resource type="Shader" uid="uid://6bmpdwvfcu7p" path="res://shaders/moveUpDown.gdshader" id="3_0wlei"]
+[ext_resource type="AudioStream" uid="uid://cubwic0h18xco" path="res://audio/tiles/SYS_text.ogg" id="3_45lc8"]
+[ext_resource type="Texture2D" uid="uid://dfjwtwv82a1od" path="res://assets/dialog/ninepath-1.png.png" id="3_856tc"]
+[ext_resource type="Texture2D" uid="uid://b3defkeuoa5pr" path="res://assets/dialog/GameOverText.png" id="3_immvn"]
+[ext_resource type="Texture2D" uid="uid://cq6bm63mp26ny" path="res://assets/dialog/GameOverBG.png" id="3_pll3q"]
+[ext_resource type="AudioStream" uid="uid://cupcm6b43tktv" path="res://audio/sfx/SYS_cursor1.ogg" id="4_35ul7"]
+[ext_resource type="FontFile" uid="uid://bxm5isfgrapdr" path="res://assets/fonts/OMORI_GAME2.ttf" id="4_mn3io"]
+[ext_resource type="Shader" uid="uid://d2ybshoc82nm5" path="res://shaders/bounce_sideways.gdshader" id="5_04xm2"]
+[ext_resource type="Texture2D" uid="uid://chqwuceqapdr8" path="res://ui/redPointerRight.png" id="6_immvn"]
+
+[sub_resource type="Animation" id="Animation_immvn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cursor:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Retry:visible_characters")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Text:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Yes:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("No:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_04xm2"]
+resource_name = "ready"
+length = 5.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cursor:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Retry:visible_characters")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Text:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show_text"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Yes:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("No:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0wlei"]
+_data = {
+&"RESET": SubResource("Animation_immvn"),
+&"ready": SubResource("Animation_04xm2")
+}
+
+[sub_resource type="Animation" id="Animation_qojq1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ecyjs"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qojq1"]
+_data = {
+&"RESET": SubResource("Animation_qojq1"),
+&"fade": SubResource("Animation_ecyjs")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pll3q"]
+shader = ExtResource("3_0wlei")
+shader_parameter/height = 5.0
+shader_parameter/speed = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_immvn"]
+font = ExtResource("4_mn3io")
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_04xm2"]
+font = ExtResource("4_mn3io")
+font_size = 27
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_04xm2"]
+shader = ExtResource("5_04xm2")
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_begol")
+music = ExtResource("2_2u1tn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0wlei")
+}
+
+[node name="ScreenAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qojq1")
+}
+
+[node name="Load" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ecyjs")
+
+[node name="Dialog" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_45lc8")
+bus = &"SFX"
+
+[node name="Move" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_35ul7")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_pll3q")
+
+[node name="Screen" type="ColorRect" parent="."]
+z_index = 5
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 0)
+
+[node name="Text" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_pll3q")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -152.0
+offset_right = 116.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_immvn")
+
+[node name="Retry" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = 70.0
+offset_right = 92.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Do you want to retry?"
+label_settings = SubResource("LabelSettings_immvn")
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="YesMarker" type="Marker2D" parent="."]
+position = Vector2(212, 368)
+
+[node name="NoMarker" type="Marker2D" parent="."]
+position = Vector2(337, 368)
+
+[node name="Yes" type="MarginContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(10, 29)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.5
+offset_top = 113.5
+offset_right = -35.5
+offset_bottom = 142.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Yes"]
+layout_mode = 2
+texture = ExtResource("3_856tc")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="Yes"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Yes"]
+layout_mode = 2
+text = "yes"
+label_settings = SubResource("LabelSettings_04xm2")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="No" type="MarginContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(10, 29)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 41.0
+offset_top = 113.5
+offset_right = 79.0
+offset_bottom = 142.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="No"]
+layout_mode = 2
+texture = ExtResource("3_856tc")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="No"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="No"]
+layout_mode = 2
+text = "no"
+label_settings = SubResource("LabelSettings_04xm2")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Cursor" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_04xm2")
+position = Vector2(212, 368)
+texture = ExtResource("6_immvn")
